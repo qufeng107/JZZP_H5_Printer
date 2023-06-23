@@ -70,7 +70,7 @@ def find_code(driver, h5_url):
 
             return code, receipt
         except NoSuchElementException:
-            return '-1'
+            return '-1', receipt
 
     else:
-        return '-1'
+        return '-1', receipt
