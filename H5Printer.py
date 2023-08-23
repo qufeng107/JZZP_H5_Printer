@@ -14,6 +14,8 @@ from selenium.common.exceptions import NoSuchElementException
 
 # 读取配置文件
 def readConfig():
+    if not os.path.exists('./config.ini'):
+        sys.exit(0)  # 结束程序
     config = {}
     # 读取config文件，获取模板的每个输入框的对应方式
     with open('./config.ini', encoding='utf-8') as f:
@@ -82,8 +84,7 @@ def on_close():
 
 
 # 读取配置文件
-if not os.path.exists('./config.ini'):
-    sys.exit(0)  # 结束程序
+
 config = readConfig()
 
 h5_url = ''
@@ -119,11 +120,11 @@ shared_data = {
     'running' : True,
     'frequency' : frequency,
     'restart_flag' : restart_flag,
-    'receipt' : {}
+    'receipt' : {},
+    'new_code_event': threading.Event()
 }
 # 数据读写锁
 data_lock = threading.Lock()
-
 
 
 # 限制同时只能运行一个程序，禁止多开

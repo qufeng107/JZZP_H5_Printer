@@ -1,7 +1,19 @@
+'''
+Author: error: error: git config user.name & please set dead value or install git && error: git config user.email & please set dead value or install git & please set dead value or install git
+Date: 2023-08-23 15:42:46
+LastEditors: error: error: git config user.name & please set dead value or install git && error: git config user.email & please set dead value or install git & please set dead value or install git
+LastEditTime: 2023-08-23 20:27:27
+FilePath: \JZZP_H5_Printer\h5_listener.py
+Description: 
+
+Copyright (c) 2023 by ${git_name_email}, All Rights Reserved. 
+'''
 
 import time
+from datetime import datetime
 from selenium.common.exceptions import NoSuchElementException
-
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 def h5_listener(shared_data, data_lock):
     while True:
@@ -35,6 +47,7 @@ def h5_listener(shared_data, data_lock):
                 # print("current_code: " + shared_data['current_code'])
                 shared_data['current_code'] = code
                 shared_data['print_flag'] = True
+                shared_data['new_code_event'].set()
 
         time.sleep(frequency)  # 每x秒检查一次
 
@@ -54,22 +67,37 @@ def find_code(driver, h5_url):
             # element = driver.find_element_by_xpath("//*[contains(text(), 'Take Code')]")
             # 将'Take Code'字符串保存到共享数据
             # code = element.text
-            code = driver.find_element('xpath','/html/body/div[1]/div/div[2]/div[1]/div[2]').text
+            try:
+                time.sleep(1)
+                code = driver.find_element('xpath','/html/body/div[1]/div/div[2]/div[1]/div[2]').text
+                with open('log_listening.txt', 'a') as file:
+                    now = datetime.now()
+                    file.write('Time: ' + str(now) + '\n')
+                    file.write('Code: ' + str(code) + '\n')
+                    file.write('success\n')
+                    file.write('\n===============================\n\n')
+            except Exception as e:
+                with open('log_listening.txt', 'a') as file:
+                    now = datetime.now()
+                    file.write('Time: ' + str(now) + '\n')
+                    file.write('Error: ' + str(e) + '\n')
+                    file.write('\n===============================\n\n')
 
             # 判断是否存在Show More按钮，存在则点击
-            try:
-                element = driver.find_element('xpath','/html/body/div/div/div[2]/div[2]/div[4]/div[2]/div[4]/button')
-                element.click()
-            except NoSuchElementException:
-                1
+            # try:
+            #     element = driver.find_element('xpath','/html/body/div/div/div[2]/div[2]/div[4]/div[2]/div[4]/button')
+            #     element.click()
+            # except NoSuchElementException:
+            #     1
 
-            receipt['name'] = driver.find_elements('xpath','//*[@class="title"]')
-            receipt['qty'] = driver.find_elements('xpath','//*[@class="qty"]')
-            receipt['price'] = driver.find_elements('xpath','//*[@class="number"]')
-            receipt['info'] = driver.find_elements('xpath','//*[@class="info"]')
+            # receipt['name'] = driver.find_elements('xpath','//*[@class="title"]')
+            # receipt['qty'] = driver.find_elements('xpath','//*[@class="qty"]')
+            # receipt['price'] = driver.find_elements('xpath','//*[@class="number"]')
+            # receipt['info'] = driver.find_elements('xpath','//*[@class="info"]')
 
             return code, receipt
-        except NoSuchElementException:
+        
+        except Exception as e:
             return '-1', receipt
 
     else:
