@@ -1,0 +1,133 @@
+Time: 2023-08-24 14:57:14.422304
+Error: 'list' object has no attribute 'text'
+
+===============================
+
+Time: 2023-08-24 14:58:13.491527
+Code: 0020
+success
+
+===============================
+
+Time: 2023-08-24 15:11:10.482485
+Code: 0020
+success
+
+===============================
+
+Time: 2023-08-24 15:11:15.501815
+Error: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=116.0.5845.98)
+Stacktrace:
+	GetHandleVerifier [0x00007FF7C02852A2+57122]
+	(No symbol) [0x00007FF7C01FEA92]
+	(No symbol) [0x00007FF7C00CE3AB]
+	(No symbol) [0x00007FF7C00AE1B9]
+	(No symbol) [0x00007FF7C012B417]
+	(No symbol) [0x00007FF7C013E24F]
+	(No symbol) [0x00007FF7C0126DB3]
+	(No symbol) [0x00007FF7C00FD2B1]
+	(No symbol) [0x00007FF7C00FE494]
+	GetHandleVerifier [0x00007FF7C052EF82+2849794]
+	GetHandleVerifier [0x00007FF7C0581D24+3189156]
+	GetHandleVerifier [0x00007FF7C057ACAF+3160367]
+	GetHandleVerifier [0x00007FF7C0316D06+653702]
+	(No symbol) [0x00007FF7C020A208]
+	(No symbol) [0x00007FF7C02062C4]
+	(No symbol) [0x00007FF7C02063F6]
+	(No symbol) [0x00007FF7C01F67A3]
+	BaseThreadInitThunk [0x00007FFC825D7614+20]
+	RtlUserThreadStart [0x00007FFC82AA26B1+33]
+
+
+===============================
+
+Time: 2023-08-24 15:12:23.490263
+Code: 0020
+success
+
+===============================
+
+Time: 2023-08-24 15:12:26.497115
+Error: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=116.0.5845.98)
+Stacktrace:
+	GetHandleVerifier [0x00007FF7C02852A2+57122]
+	(No symbol) [0x00007FF7C01FEA92]
+	(No symbol) [0x00007FF7C00CE3AB]
+	(No symbol) [0x00007FF7C00AE1B9]
+	(No symbol) [0x00007FF7C012B417]
+	(No symbol) [0x00007FF7C013E24F]
+	(No symbol) [0x00007FF7C0126DB3]
+	(No symbol) [0x00007FF7C00FD2B1]
+	(No symbol) [0x00007FF7C00FE494]
+	GetHandleVerifier [0x00007FF7C052EF82+2849794]
+	GetHandleVerifier [0x00007FF7C0581D24+3189156]
+	GetHandleVerifier [0x00007FF7C057ACAF+3160367]
+	GetHandleVerifier [0x00007FF7C0316D06+653702]
+	(No symbol) [0x00007FF7C020A208]
+	(No symbol) [0x00007FF7C02062C4]
+	(No symbol) [0x00007FF7C02063F6]
+	(No symbol) [0x00007FF7C01F67A3]
+	BaseThreadInitThunk [0x00007FFC825D7614+20]
+	RtlUserThreadStart [0x00007FFC82AA26B1+33]
+
+
+===============================
+
+Time: 2023-08-24 15:17:05.533377
+Code: 0020
+success
+
+===============================
+
+Time: 2023-08-24 15:18:03.453437
+Code: 0020
+success
+
+===============================
+
+Time: 2023-08-24 15:19:51.835384
+Code: 0020
+success
+
+===============================
+
+Time: 2023-08-24 15:21:44.248098
+Code: 0020
+success
+
+===============================
+
+Time: 2023-08-24 15:24:00.909356
+Code: 0020
+success
+
+===============================
+
+Time: 2023-08-24 15:25:59.470073
+Code: 0020
+success
+
+===============================
+
+Time: 2023-08-24 15:26:32.417184
+Code: 0020
+success
+
+===============================
+
+Time: 2023-08-24 15:33:38.918326
+Code: 0
+success
+
+===============================
+
+Time: 2023-08-24 15:35:25.613179
+Code: 0
+success
+
+===============================
+

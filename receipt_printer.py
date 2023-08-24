@@ -1,8 +1,8 @@
 '''
 Author: error: error: git config user.name & please set dead value or install git && error: git config user.email & please set dead value or install git & please set dead value or install git
 Date: 2023-08-23 15:42:46
-LastEditors: error: error: git config user.name & please set dead value or install git && error: git config user.email & please set dead value or install git & please set dead value or install git
-LastEditTime: 2023-08-23 20:26:38
+LastEditors: qufeng107 qufeng107@gmail.com
+LastEditTime: 2023-08-24 15:35:05
 FilePath: \JZZP_H5_Printer\receipt_printer.py
 Description: 
 
@@ -16,16 +16,17 @@ from datetime import datetime
 def receipt_printer(shared_data, data_lock):
 
     while True:
-        # 检查软件状态
-        running = shared_data['running']
-        if not running:
-            break
-
         code = ''
         receipt = {}
 
         # 这会阻止线程直到事件被设置
         shared_data['new_code_event'].wait() 
+
+        # 检查软件状态
+        running = shared_data['running']
+        if running == False:
+            print('Stopping Printer')
+            break
 
         with data_lock:
             # frequency = int(shared_data['frequency'])
@@ -37,13 +38,15 @@ def receipt_printer(shared_data, data_lock):
         # 打印
         with data_lock:
             if shared_data['print_flag'] == True:
-                print_code(code, receipt)
+                if str(code) != '0':
+                    print_code(code, receipt)
                 shared_data['print_flag'] = False
 
 
         # time.sleep(frequency)  # 每x秒检查一次
         shared_data['new_code_event'].clear()  # 重置事件，以便下次使用
 
+    print('Printer Stopped')
 
 
 
@@ -79,7 +82,7 @@ def print_code(code, receipt):
     # 调用打印机
     print("Printing new code: " + code)
     font_code = {
-        "height": 22,
+        "height": 24,
     }
     font_title = {
         "height": 14,
@@ -96,7 +99,8 @@ def print_code(code, receipt):
     while(printed == False):
         try:
             with Printer(linegap=1) as printer:
-                printer.text(f"Order ID: {code}", font_config=font_code, align="center")
+                printer.text(f"Self Order", font_config=font_code, align="center")
+                printer.text(f"No. {code}", font_config=font_code, align="center")
                 # printer.text("--------------------------------------------------------------------------", font_config={"height":10}, align="center")
                 # printer.text("Qty    ItemName                             Price", font_config=font_title, align="left")
                 # for i in range(0, dish_num):

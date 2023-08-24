@@ -10,6 +10,14 @@ import selenium.webdriver as webdriver
 from selenium.common.exceptions import NoSuchElementException
 
 
+# 数据读写锁
+data_lock = threading.Lock()
+
+# 线程
+threads = []
+
+# 创建一个Chrome浏览器实例
+driver = webdriver.Chrome()
 
 
 # 读取配置文件
@@ -33,14 +41,22 @@ def readConfig():
 
 # 启动子线程
 def start_threads():
-    shared_data['running'] = True
-    threading.Thread(target=h5_listener, args=(shared_data, data_lock)).start()
-    threading.Thread(target=receipt_printer, args=(shared_data, data_lock)).start()
+    with data_lock:
+        shared_data['running'] = True
+    
+    threads.append(threading.Thread(target=h5_listener, args=(shared_data, data_lock)))
+    threads.append(threading.Thread(target=receipt_printer, args=(shared_data, data_lock)))
+
+    for thread in threads:
+        thread.start()
 
 
 # 暂停子线程
 def stop_threads():
-    shared_data['running'] = False
+    with data_lock:
+        shared_data['running'] = False
+        shared_data['frequency'] = 0.01
+    
 
 
 # 更新GUI
@@ -52,9 +68,16 @@ def update_gui(status_var, url_var, current_code_var, print_status_var, previous
     previous_code_var.set('Previous Take Code: ' + shared_data['previous_code'])
     root.after(1000, update_gui, status_var, url_var, current_code_var, print_status_var, previous_code_var)  # 每秒更新一次
 
+
 # 当窗口关闭时
 def on_close():
     stop_threads()  # 停止所有线程
+
+    # 等待所有子线程完成
+    for thread in threads:
+        thread.join()
+
+    driver.quit() # 关闭浏览器driver
     pid_lock.release()  # 释放锁
     root.destroy()  # 销毁窗口
     sys.exit(0)  # 结束程序
@@ -102,8 +125,7 @@ if config['time'] != '':
     frequency = config['time']
 
 
-# 创建一个Chrome浏览器实例
-driver = webdriver.Chrome()
+
 # 打开一个网页
 driver.get(h5_url)
 # 以全屏模式打开Chrome浏览器
@@ -123,8 +145,6 @@ shared_data = {
     'receipt' : {},
     'new_code_event': threading.Event()
 }
-# 数据读写锁
-data_lock = threading.Lock()
 
 
 # 限制同时只能运行一个程序，禁止多开
