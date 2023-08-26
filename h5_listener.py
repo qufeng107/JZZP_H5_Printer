@@ -2,7 +2,7 @@
 Author: error: error: git config user.name & please set dead value or install git && error: git config user.email & please set dead value or install git & please set dead value or install git
 Date: 2023-08-23 15:42:46
 LastEditors: qufeng107 qufeng107@gmail.com
-LastEditTime: 2023-08-24 15:36:28
+LastEditTime: 2023-08-26 20:44:01
 FilePath: \JZZP_H5_Printer\h5_listener.py
 Description: 
 
@@ -14,6 +14,7 @@ from datetime import datetime
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import selenium.webdriver as webdriver
 
 
 
@@ -40,13 +41,34 @@ def h5_listener(shared_data, data_lock):
             driver = shared_data['driver']
             h5_url = shared_data['url']
 
+        try:
+            driver.fullscreen_window()
+        except Exception as e:
+            pass
+        
         # 监听网页
-        res = find_code(driver, h5_url)
+        h5_order_url = h5_url.replace('/menu', '/order')
+        res = find_code(driver, h5_order_url)
         code = res[0]
         receipt = res[1]
         
         if code == '-1':
             error = receipt
+            # print('new error= ', error)
+            if 'Message: no such window: target window already closed' in error:
+                try:
+                    driver.quit()
+                except Exception as e:
+                    pass
+                driver = webdriver.Chrome()
+                driver.get(h5_url)
+                # 以全屏模式打开Chrome浏览器
+                driver.fullscreen_window()
+                # 更新shared_data的driver实例
+                with data_lock:
+                    shared_data['driver'] = driver
+
+
             if error not in error_msg:
                 with open('log_listening.txt', 'a') as file:
                     now = datetime.now()
@@ -54,7 +76,7 @@ def h5_listener(shared_data, data_lock):
                     file.write('Error: ' + error + '\n')
                     file.write('\n===============================\n\n')
                     error_msg = error
-                    print('old error= ', error_msg)
+                    # print('old error= ', error_msg)
 
             time.sleep(frequency)
             continue
@@ -94,8 +116,7 @@ def find_code(driver, h5_url):
     # print("Current Url: " + str(driver.current_url))
 
     try:
-        if 'https://tg2.weimember.cn/' in driver.current_url and '/order/' in driver.current_url :
-                
+        if h5_url in driver.current_url and '/order/' in driver.current_url :
             # 搜索包含'Take Code'字符串的文本框
             # element = driver.find_element_by_xpath("//*[contains(text(), 'Take Code')]")
             # 将'Take Code'字符串保存到共享数据

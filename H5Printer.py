@@ -77,8 +77,12 @@ def on_close():
     for thread in threads:
         thread.join()
 
+    with data_lock:
+        driver = shared_data['driver']
     driver.quit() # 关闭浏览器driver
+
     pid_lock.release()  # 释放锁
+
     root.destroy()  # 销毁窗口
     sys.exit(0)  # 结束程序
 
