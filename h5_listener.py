@@ -2,7 +2,7 @@
 Author: error: error: git config user.name & please set dead value or install git && error: git config user.email & please set dead value or install git & please set dead value or install git
 Date: 2023-08-23 15:42:46
 LastEditors: qufeng107 qufeng107@gmail.com
-LastEditTime: 2023-08-26 20:44:01
+LastEditTime: 2023-08-31 19:55:31
 FilePath: \JZZP_H5_Printer\h5_listener.py
 Description: 
 
@@ -45,7 +45,6 @@ def h5_listener(shared_data, data_lock):
             driver.fullscreen_window()
         except Exception as e:
             pass
-        
         # 监听网页
         h5_order_url = h5_url.replace('/menu', '/order')
         res = find_code(driver, h5_order_url)
@@ -60,7 +59,9 @@ def h5_listener(shared_data, data_lock):
                     driver.quit()
                 except Exception as e:
                     pass
-                driver = webdriver.Chrome()
+                chrome_options = webdriver.ChromeOptions()
+                chrome_options.add_argument("--force-device-scale-factor=1.5")
+                driver = webdriver.Chrome(options=chrome_options)
                 driver.get(h5_url)
                 # 以全屏模式打开Chrome浏览器
                 driver.fullscreen_window()

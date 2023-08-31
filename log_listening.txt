@@ -335,3 +335,205 @@ Stacktrace:
 
 ===============================
 
+Time: 2023-08-30 19:11:17.216481
+Code: 0020
+success
+
+===============================
+
+Time: 2023-08-31 19:45:01.501046
+Error: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=116.0.5845.112)
+Stacktrace:
+	GetHandleVerifier [0x00007FF7ED6E52A2+57122]
+	(No symbol) [0x00007FF7ED65EA92]
+	(No symbol) [0x00007FF7ED52E3AB]
+	(No symbol) [0x00007FF7ED50E1B9]
+	(No symbol) [0x00007FF7ED58B417]
+	(No symbol) [0x00007FF7ED59E24F]
+	(No symbol) [0x00007FF7ED586DB3]
+	(No symbol) [0x00007FF7ED55D2B1]
+	(No symbol) [0x00007FF7ED55E494]
+	GetHandleVerifier [0x00007FF7ED98EF82+2849794]
+	GetHandleVerifier [0x00007FF7ED9E1D24+3189156]
+	GetHandleVerifier [0x00007FF7ED9DACAF+3160367]
+	GetHandleVerifier [0x00007FF7ED776D06+653702]
+	(No symbol) [0x00007FF7ED66A208]
+	(No symbol) [0x00007FF7ED6662C4]
+	(No symbol) [0x00007FF7ED6663F6]
+	(No symbol) [0x00007FF7ED6567A3]
+	BaseThreadInitThunk [0x00007FFC9F2D7614+20]
+	RtlUserThreadStart [0x00007FFCA02226B1+33]
+
+
+===============================
+
+Time: 2023-08-31 19:47:11.735220
+Error: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=116.0.5845.112)
+Stacktrace:
+	GetHandleVerifier [0x00007FF7ED6E52A2+57122]
+	(No symbol) [0x00007FF7ED65EA92]
+	(No symbol) [0x00007FF7ED52E3AB]
+	(No symbol) [0x00007FF7ED50E1B9]
+	(No symbol) [0x00007FF7ED58B417]
+	(No symbol) [0x00007FF7ED59E24F]
+	(No symbol) [0x00007FF7ED586DB3]
+	(No symbol) [0x00007FF7ED55D2B1]
+	(No symbol) [0x00007FF7ED55E494]
+	GetHandleVerifier [0x00007FF7ED98EF82+2849794]
+	GetHandleVerifier [0x00007FF7ED9E1D24+3189156]
+	GetHandleVerifier [0x00007FF7ED9DACAF+3160367]
+	GetHandleVerifier [0x00007FF7ED776D06+653702]
+	(No symbol) [0x00007FF7ED66A208]
+	(No symbol) [0x00007FF7ED6662C4]
+	(No symbol) [0x00007FF7ED6663F6]
+	(No symbol) [0x00007FF7ED6567A3]
+	BaseThreadInitThunk [0x00007FFC9F2D7614+20]
+	RtlUserThreadStart [0x00007FFCA02226B1+33]
+
+
+===============================
+
+Time: 2023-08-31 19:50:17.487233
+Error: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=116.0.5845.112)
+Stacktrace:
+	GetHandleVerifier [0x00007FF7ED6E52A2+57122]
+	(No symbol) [0x00007FF7ED65EA92]
+	(No symbol) [0x00007FF7ED52E3AB]
+	(No symbol) [0x00007FF7ED50E1B9]
+	(No symbol) [0x00007FF7ED58B417]
+	(No symbol) [0x00007FF7ED59E24F]
+	(No symbol) [0x00007FF7ED586DB3]
+	(No symbol) [0x00007FF7ED55D2B1]
+	(No symbol) [0x00007FF7ED55E494]
+	GetHandleVerifier [0x00007FF7ED98EF82+2849794]
+	GetHandleVerifier [0x00007FF7ED9E1D24+3189156]
+	GetHandleVerifier [0x00007FF7ED9DACAF+3160367]
+	GetHandleVerifier [0x00007FF7ED776D06+653702]
+	(No symbol) [0x00007FF7ED66A208]
+	(No symbol) [0x00007FF7ED6662C4]
+	(No symbol) [0x00007FF7ED6663F6]
+	(No symbol) [0x00007FF7ED6567A3]
+	BaseThreadInitThunk [0x00007FFC9F2D7614+20]
+	RtlUserThreadStart [0x00007FFCA02226B1+33]
+
+
+===============================
+
+Time: 2023-08-31 19:51:00.024699
+Error: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=116.0.5845.112)
+Stacktrace:
+	GetHandleVerifier [0x00007FF7ED6E52A2+57122]
+	(No symbol) [0x00007FF7ED65EA92]
+	(No symbol) [0x00007FF7ED52E3AB]
+	(No symbol) [0x00007FF7ED50E1B9]
+	(No symbol) [0x00007FF7ED58B417]
+	(No symbol) [0x00007FF7ED59E24F]
+	(No symbol) [0x00007FF7ED586DB3]
+	(No symbol) [0x00007FF7ED55D2B1]
+	(No symbol) [0x00007FF7ED55E494]
+	GetHandleVerifier [0x00007FF7ED98EF82+2849794]
+	GetHandleVerifier [0x00007FF7ED9E1D24+3189156]
+	GetHandleVerifier [0x00007FF7ED9DACAF+3160367]
+	GetHandleVerifier [0x00007FF7ED776D06+653702]
+	(No symbol) [0x00007FF7ED66A208]
+	(No symbol) [0x00007FF7ED6662C4]
+	(No symbol) [0x00007FF7ED6663F6]
+	(No symbol) [0x00007FF7ED6567A3]
+	BaseThreadInitThunk [0x00007FFC9F2D7614+20]
+	RtlUserThreadStart [0x00007FFCA02226B1+33]
+
+
+===============================
+
+Time: 2023-08-31 20:00:34.075204
+Error: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=116.0.5845.112)
+Stacktrace:
+	GetHandleVerifier [0x00007FF7ED6E52A2+57122]
+	(No symbol) [0x00007FF7ED65EA92]
+	(No symbol) [0x00007FF7ED52E3AB]
+	(No symbol) [0x00007FF7ED50E1B9]
+	(No symbol) [0x00007FF7ED58B417]
+	(No symbol) [0x00007FF7ED59E24F]
+	(No symbol) [0x00007FF7ED586DB3]
+	(No symbol) [0x00007FF7ED55D2B1]
+	(No symbol) [0x00007FF7ED55E494]
+	GetHandleVerifier [0x00007FF7ED98EF82+2849794]
+	GetHandleVerifier [0x00007FF7ED9E1D24+3189156]
+	GetHandleVerifier [0x00007FF7ED9DACAF+3160367]
+	GetHandleVerifier [0x00007FF7ED776D06+653702]
+	(No symbol) [0x00007FF7ED66A208]
+	(No symbol) [0x00007FF7ED6662C4]
+	(No symbol) [0x00007FF7ED6663F6]
+	(No symbol) [0x00007FF7ED6567A3]
+	BaseThreadInitThunk [0x00007FFC9F2D7614+20]
+	RtlUserThreadStart [0x00007FFCA02226B1+33]
+
+
+===============================
+
+Time: 2023-08-31 20:01:54.040227
+Error: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=116.0.5845.112)
+Stacktrace:
+	GetHandleVerifier [0x00007FF7ED6E52A2+57122]
+	(No symbol) [0x00007FF7ED65EA92]
+	(No symbol) [0x00007FF7ED52E3AB]
+	(No symbol) [0x00007FF7ED50E1B9]
+	(No symbol) [0x00007FF7ED58B417]
+	(No symbol) [0x00007FF7ED59E24F]
+	(No symbol) [0x00007FF7ED586DB3]
+	(No symbol) [0x00007FF7ED55D2B1]
+	(No symbol) [0x00007FF7ED55E494]
+	GetHandleVerifier [0x00007FF7ED98EF82+2849794]
+	GetHandleVerifier [0x00007FF7ED9E1D24+3189156]
+	GetHandleVerifier [0x00007FF7ED9DACAF+3160367]
+	GetHandleVerifier [0x00007FF7ED776D06+653702]
+	(No symbol) [0x00007FF7ED66A208]
+	(No symbol) [0x00007FF7ED6662C4]
+	(No symbol) [0x00007FF7ED6663F6]
+	(No symbol) [0x00007FF7ED6567A3]
+	BaseThreadInitThunk [0x00007FFC9F2D7614+20]
+	RtlUserThreadStart [0x00007FFCA02226B1+33]
+
+
+===============================
+
+Time: 2023-08-31 20:02:37.198269
+Error: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=116.0.5845.112)
+Stacktrace:
+	GetHandleVerifier [0x00007FF7ED6E52A2+57122]
+	(No symbol) [0x00007FF7ED65EA92]
+	(No symbol) [0x00007FF7ED52E3AB]
+	(No symbol) [0x00007FF7ED50E1B9]
+	(No symbol) [0x00007FF7ED58B417]
+	(No symbol) [0x00007FF7ED59E24F]
+	(No symbol) [0x00007FF7ED586DB3]
+	(No symbol) [0x00007FF7ED55D2B1]
+	(No symbol) [0x00007FF7ED55E494]
+	GetHandleVerifier [0x00007FF7ED98EF82+2849794]
+	GetHandleVerifier [0x00007FF7ED9E1D24+3189156]
+	GetHandleVerifier [0x00007FF7ED9DACAF+3160367]
+	GetHandleVerifier [0x00007FF7ED776D06+653702]
+	(No symbol) [0x00007FF7ED66A208]
+	(No symbol) [0x00007FF7ED6662C4]
+	(No symbol) [0x00007FF7ED6663F6]
+	(No symbol) [0x00007FF7ED6567A3]
+	BaseThreadInitThunk [0x00007FFC9F2D7614+20]
+	RtlUserThreadStart [0x00007FFCA02226B1+33]
+
+
+===============================
+

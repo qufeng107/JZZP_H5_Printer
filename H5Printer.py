@@ -17,7 +17,9 @@ data_lock = threading.Lock()
 threads = []
 
 # 创建一个Chrome浏览器实例
-driver = webdriver.Chrome()
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument("--force-device-scale-factor=1.5")
+driver = webdriver.Chrome(options=chrome_options)
 
 
 # 读取配置文件
@@ -43,7 +45,9 @@ def readConfig():
 def start_threads():
     with data_lock:
         shared_data['running'] = True
-    
+        shared_data['frequency'] = frequency
+    global threads
+    threads = []
     threads.append(threading.Thread(target=h5_listener, args=(shared_data, data_lock)))
     threads.append(threading.Thread(target=receipt_printer, args=(shared_data, data_lock)))
 
@@ -71,19 +75,24 @@ def update_gui(status_var, url_var, current_code_var, print_status_var, previous
 
 # 当窗口关闭时
 def on_close():
+    root.destroy()  # 销毁窗口
+
+    # 关闭浏览器driver
+    with data_lock:
+        driver = shared_data['driver']
+
+    try:
+        driver.quit() 
+    except Exception as e:
+            pass
+
     stop_threads()  # 停止所有线程
 
     # 等待所有子线程完成
     for thread in threads:
         thread.join()
 
-    with data_lock:
-        driver = shared_data['driver']
-    driver.quit() # 关闭浏览器driver
-
-    pid_lock.release()  # 释放锁
-
-    root.destroy()  # 销毁窗口
+    # pid_lock.release()  # 释放锁
     sys.exit(0)  # 结束程序
 
 
@@ -154,11 +163,11 @@ shared_data = {
 # 限制同时只能运行一个程序，禁止多开
 # 利用文件锁技术，事先选定一个文件作为锁，运行第一个进程时锁住此文件
 # 再次运行程序时检测文件此是否被锁定，若被锁定就说明已有一个程序正在运行
-pid_lock = fasteners.InterProcessLock('./H5Printer.lock')
-gotten = pid_lock.acquire(blocking=False)
-if not gotten:
-    print("Another instance of this application currently running.")
-    sys.exit(1)
+# pid_lock = fasteners.InterProcessLock('./H5Printer.lock')
+# gotten = pid_lock.acquire(blocking=False)
+# if not gotten:
+#     print("Another instance of this application currently running.")
+#     sys.exit(1)
 
 
 # GUI
@@ -223,4 +232,8 @@ update_gui(status_var, url_var, current_code_var, print_status_var, previous_cod
 # 自动开始监听
 start_threads()
 
+# 最小化窗口
+root.iconify()
+
 root.mainloop()
+
