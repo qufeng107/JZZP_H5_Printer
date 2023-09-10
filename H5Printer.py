@@ -16,10 +16,6 @@ data_lock = threading.Lock()
 # 线程
 threads = []
 
-# 创建一个Chrome浏览器实例
-chrome_options = webdriver.ChromeOptions()
-chrome_options.add_argument("--force-device-scale-factor=1.5")
-driver = webdriver.Chrome(options=chrome_options)
 
 
 # 读取配置文件
@@ -75,25 +71,29 @@ def update_gui(status_var, url_var, current_code_var, print_status_var, previous
 
 # 当窗口关闭时
 def on_close():
-    root.destroy()  # 销毁窗口
-
-    # 关闭浏览器driver
-    with data_lock:
-        driver = shared_data['driver']
 
     try:
+        root.destroy()  # 销毁窗口
+
+        # 关闭浏览器driver
+        with data_lock:
+            driver = shared_data['driver']
+
         driver.quit() 
+
+        stop_threads()  # 停止所有线程
+
+        # 等待所有子线程完成
+        for thread in threads:
+            thread.join()
+
+        # pid_lock.release()  # 释放锁
+        sys.exit(0)  # 结束程序
+
     except Exception as e:
             pass
 
-    stop_threads()  # 停止所有线程
 
-    # 等待所有子线程完成
-    for thread in threads:
-        thread.join()
-
-    # pid_lock.release()  # 释放锁
-    sys.exit(0)  # 结束程序
 
 
 # def restart():
@@ -125,6 +125,7 @@ config = readConfig()
 
 h5_url = ''
 frequency = 2
+zoom = 1.3
 restart_flag = False
 
 # 读取监听url
@@ -137,8 +138,19 @@ else:
 if config['time'] != '':
     frequency = config['time']
 
+if config['zoom'] != '':
+    try: 
+        zoom =config['zoom']
+    except Exception:
+        pass
 
+# 创建一个Chrome浏览器实例
+chrome_options = webdriver.ChromeOptions()
 
+argument_str = "--force-device-scale-factor=" + str(zoom)
+chrome_options.add_argument(argument_str)
+
+driver = webdriver.Chrome(options=chrome_options)
 # 打开一个网页
 driver.get(h5_url)
 # 以全屏模式打开Chrome浏览器
@@ -149,6 +161,7 @@ driver.fullscreen_window()
 shared_data = {
     'driver': driver,
     'url': h5_url,
+    'zoom': zoom,
     'current_code': '',
     'previous_code': '',
     'print_flag': False,
